@@ -1,38 +1,47 @@
 'use client'
 
-import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
+import { fetchTimelinesDate } from '@/api/timeline'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 
-function CustomCalendar() {
-  const [date, setDate] = useState<Date[] | undefined>([
-    new Date(),
-    new Date(new Date().setDate(new Date().getDate() + 3)),
-    new Date(new Date().setDate(new Date().getDate() + 7)),
-    new Date(new Date().setDate(new Date().getDate() - 30)),
-  ])
+interface ICustomCalendarProps {
+  onDateSelect: (date: Date | null) => void
+}
+function CustomCalendar({ onDateSelect }: ICustomCalendarProps) {
+  const { data, isSuccess } = useQuery({
+    queryKey: ['timelinesDate'],
+    queryFn: fetchTimelinesDate,
+  })
 
-  const handleSelectDay = (dates: Date[] | undefined) => {
-    if (!dates) {
+  const handleSelectDay = (date: Date | undefined) => {
+    if (!date || !isSuccess) {
+      onDateSelect(null)
       return
     }
-    console.log(dates.at(-1))
-    console.log('efef')
+
+    if (!data.some((el) => el.toISOString() === date.toISOString())) {
+      onDateSelect(null)
+      return
+    }
+
+    onDateSelect(date)
+    return
   }
-  console.log(date)
+
   return (
     <div className="bg-card flex flex-col space-y-1 rounded-2xl p-3">
       <Calendar
         mode="multiple"
-        selected={date}
-        onSelect={(e) => handleSelectDay(e)}
+        selected={isSuccess ? data : undefined}
+        onSelect={(_, selectedDay) => handleSelectDay(selectedDay)}
       />
       <Button
         variant="outline"
         size="sm"
         className="hover:bg-primary hover:text-card mt-3 cursor-pointer text-xs"
-        // onClick={() => setDate([])}
+        onClick={() => onDateSelect(null)}
       >
         모든 기록 보기
       </Button>

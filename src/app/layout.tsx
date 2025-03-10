@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Footer from '@/components/global/Footer'
 import Header from '@/components/global/Header'
+import TanstackQueryProvider from '@/providers/tanstackQueryProvider'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,12 +32,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="mx-auto flex min-h-screen max-w-7xl flex-col">
-          <Header />
-          <div className="grow">{children}</div>
+        <TanstackQueryProvider>
+          <div className="mx-auto flex min-h-screen max-w-7xl flex-col">
+            <Header />
+            <div className="grow">{children}</div>
 
-          <Footer />
-        </div>
+            <Footer />
+          </div>
+        </TanstackQueryProvider>
       </body>
     </html>
   )
