@@ -28,7 +28,7 @@ function Header() {
             게임 기록
           </NavLink>
           <NavLink
-            href="/participants"
+            href="/streamers"
             pathname={pathname}
           >
             스트리머

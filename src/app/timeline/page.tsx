@@ -140,7 +140,7 @@ export default function TimeLinePage() {
           className="gap-1"
         >
           <Link
-            href="/participants"
+            href="/streamers"
             className="flex gap-2"
           >
             <Users className="h-4 w-4" />
