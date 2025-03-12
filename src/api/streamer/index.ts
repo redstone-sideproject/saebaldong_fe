@@ -1,6 +1,7 @@
 import publicAPI from '@/api/publicAPI'
 import {
   IStreamerWithStatus,
+  IStreamerProfile,
   SortFieldUnion,
   SortOrderUnion,
 } from '@/types/streamer'
@@ -14,4 +15,12 @@ async function fetchStreamersWithStatus(params: {
   return result.data
 }
 
-export { fetchStreamersWithStatus }
+async function fetchStreamerProfile(
+  streamerId: number,
+): Promise<IStreamerProfile> {
+  const result = await publicAPI.get(`/streamer/${streamerId}`)
+
+  return result.data
+}
+
+export { fetchStreamersWithStatus, fetchStreamerProfile }

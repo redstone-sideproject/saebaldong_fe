@@ -5,6 +5,7 @@ import { Home, Search, SortAsc, SortDesc, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
+import { fetchStreamersWithStatus } from '@/api/streamer'
 import BottomNav from '@/components/global/BottomNav'
 import StreamerList from '@/components/streamer/StreamerList'
 import { Button } from '@/components/ui/button'
@@ -17,8 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-
-import { fetchStreamersWithStatus } from '@/api/streamer'
 import useDebounce from '@/hooks/useDebounce'
 import { SortFieldUnion, SortOrderUnion } from '@/types/streamer'
 

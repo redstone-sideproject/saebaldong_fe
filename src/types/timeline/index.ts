@@ -11,8 +11,6 @@ interface Timeline {
   title: string
   description: string
   date: string
-  createdAt: string
-  updatedAt: string
   participations: Participation[]
 }
 

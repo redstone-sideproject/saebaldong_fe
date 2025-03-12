@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         pathname: '/**',
         hostname: 'nng-phinf.pstatic.net',
       },
+      {
+        protocol: 'https',
+        pathname: '/**',
+        hostname: 'yt3.googleusercontent.com',
+      },
     ],
   },
 }

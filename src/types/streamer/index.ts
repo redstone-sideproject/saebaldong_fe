@@ -11,8 +11,29 @@ interface IStreamer {
 interface IStreamerWithStatus extends IStreamer {
   totalParticipations: number
   totalParticipationTime: number
-  totalGames: number
   participationRatio: number
+}
+
+interface ICoPlayer {
+  nickname: string
+  count: number
+}
+
+interface IMonthlyParticipation {
+  yearMonth: string
+  count: number
+}
+
+interface IStreamerProfile extends IStreamerWithStatus {
+  timelines: {
+    timelineId: number
+    title: string
+    description: string
+    date: string
+    participants: string[]
+  }[]
+  coPlayers: ICoPlayer[]
+  monthlyParticipation: IMonthlyParticipation[]
 }
 
 export const sortFieldKeys = {
@@ -49,6 +70,8 @@ type StreamerRoleUnion =
 export type {
   IStreamer,
   IStreamerWithStatus,
+  IStreamerProfile,
+  IMonthlyParticipation,
   SortFieldUnion,
   SortOrderUnion,
   StreamerRoleUnion,
