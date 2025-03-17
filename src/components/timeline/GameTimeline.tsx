@@ -1,15 +1,26 @@
 'use client'
 
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import { Card, CardContent } from '@/components/ui/card'
 import { transDateFormat } from '@/lib/date'
 import { Timeline } from '@/types/timeline'
+
 interface IGameTimelineProps {
   data: Timeline
 }
 
 function GameTimeline({ data }: IGameTimelineProps) {
+  const router = useRouter()
+
+  const handleStreamerClick = (streamerId: number) => {
+    if (!streamerId) {
+      return
+    }
+    router.push(`/streamers/${streamerId}`)
+  }
+
   return (
     <div className="space-y-6">
       <div className="mb-8">
@@ -45,6 +56,9 @@ function GameTimeline({ data }: IGameTimelineProps) {
                     <div
                       key={crypto.randomUUID()}
                       className="hover:border-primary flex cursor-pointer items-center gap-1.5 rounded-full border p-1"
+                      onClick={() =>
+                        handleStreamerClick(participation.streamer.streamerId)
+                      }
                     >
                       <Image
                         className="rounded-full"
