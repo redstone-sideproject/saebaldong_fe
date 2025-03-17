@@ -36,6 +36,7 @@ export default function TimeLinePage() {
     queryKey: ['timeline', selectedDate],
     queryFn: () => (selectedDate ? fetchTimelineByDate(selectedDate) : null),
     enabled: !!selectedDate,
+    staleTime: 1000 * 10,
   })
 
   const {
@@ -52,7 +53,7 @@ export default function TimeLinePage() {
         ? undefined
         : lastPage.currentPage + 1,
     initialPageParam: 1,
-    staleTime: 1000 * 2,
+    staleTime: 1000 * 5,
   })
 
   const handleDateChage = (date: Date | null) => {
@@ -140,7 +141,7 @@ export default function TimeLinePage() {
           className="gap-1"
         >
           <Link
-            href="/participants"
+            href="/streamers"
             className="flex gap-2"
           >
             <Users className="h-4 w-4" />

@@ -31,7 +31,7 @@ export default function Home() {
               </div>
             </Link>
             <Link
-              href="/participants"
+              href="/streamers"
               className="group border-border/50 bg-card hover:border-primary/50 hover:shadow-primary/5 relative overflow-hidden rounded-lg border p-6 text-left shadow-md transition-all hover:shadow-lg"
             >
               <div className="flex h-full flex-col justify-between">

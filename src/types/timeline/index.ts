@@ -1,17 +1,9 @@
-interface Streamer {
-  streamerId: number
-  hashId: string
-  nickname: string
-  role: string
-  profileImageUrl: string
-  createdAt: string
-  updatedAt: string
-}
+import { IStreamer } from '@/types/streamer'
 
 interface Participation {
   participationId: number
   playHour: number
-  streamer: Streamer
+  streamer: IStreamer
 }
 
 interface Timeline {
@@ -19,8 +11,6 @@ interface Timeline {
   title: string
   description: string
   date: string
-  createdAt: string
-  updatedAt: string
   participations: Participation[]
 }
 
