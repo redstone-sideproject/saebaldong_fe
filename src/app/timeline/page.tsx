@@ -11,6 +11,7 @@ import BottomNav from '@/components/global/BottomNav'
 import CustomCalendar from '@/components/timeline/CustomCalendar'
 import GameTimeline from '@/components/timeline/GameTimeline'
 import { Button } from '@/components/ui/button'
+import { GAPageView } from '@/hooks/useGAPageView'
 import { useObserver } from '@/hooks/useObserver'
 
 export default function TimeLinePage() {
@@ -149,6 +150,7 @@ export default function TimeLinePage() {
           </Link>
         </Button>
       </BottomNav>
+      <GAPageView />
     </div>
   )
 }

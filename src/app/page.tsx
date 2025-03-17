@@ -1,6 +1,8 @@
 import { ArrowRight, Calendar, Users } from 'lucide-react'
 import Link from 'next/link'
 
+import { GAPageView } from '@/hooks/useGAPageView'
+
 export default function Home() {
   return (
     <div className="flex flex-col">
@@ -48,6 +50,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <GAPageView />
     </div>
   )
 }
