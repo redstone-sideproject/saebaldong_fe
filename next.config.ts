@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         pathname: '/**',
-        hostname: 'yt3.googleusercontent.com',
+        hostname: 'profile.img.sooplive.co.kr',
       },
     ],
   },
