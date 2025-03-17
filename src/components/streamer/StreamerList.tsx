@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
+import { gacta } from '@/lib/gacta'
+import { GA_CTA_EVENTS } from '@/types/constants'
 import { IStreamerWithStatus, streamerRoleKeyToValue } from '@/types/streamer'
 
 interface IStreamerListProps {
@@ -48,6 +50,7 @@ function StreamerList({ data, isLoading, isError }: IStreamerListProps) {
           key={streamer.streamerId}
           href={`/streamers/${streamer.streamerId}`}
           className="border-border/50 bg-secondary/30 hover:border-primary/30 hover:bg-secondary/40 flex items-center rounded-lg border p-3 transition-colors"
+          onClick={() => gacta(GA_CTA_EVENTS.onClickStreamerDetailCTA)}
         >
           <Avatar className="border-border/50 h-12 w-12 border">
             <AvatarImage src={streamer.profileImageUrl} />

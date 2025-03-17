@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 
 import { Card, CardContent } from '@/components/ui/card'
 import { transDateFormat } from '@/lib/date'
+import { gacta } from '@/lib/gacta'
+import { GA_CTA_EVENTS } from '@/types/constants'
 import { Timeline } from '@/types/timeline'
 
 interface IGameTimelineProps {
@@ -50,15 +52,14 @@ function GameTimeline({ data }: IGameTimelineProps) {
                 </p>
 
                 <div className="flex flex-wrap gap-2">
-                  {/* one */}
-
                   {data.participations.map((participation) => (
                     <div
                       key={crypto.randomUUID()}
                       className="hover:border-primary flex cursor-pointer items-center gap-1.5 rounded-full border p-1"
-                      onClick={() =>
+                      onClick={() => {
                         handleStreamerClick(participation.streamer.streamerId)
-                      }
+                        gacta(GA_CTA_EVENTS.onClickStreamerDetailCTA)
+                      }}
                     >
                       <Image
                         className="rounded-full"

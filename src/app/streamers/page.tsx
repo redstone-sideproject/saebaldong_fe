@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import useDebounce from '@/hooks/useDebounce'
+import { GAPageView } from '@/hooks/useGAPageView'
 import { SortFieldUnion, SortOrderUnion } from '@/types/streamer'
 
 export default function StreamersPage() {
@@ -162,6 +163,7 @@ export default function StreamersPage() {
           </Link>
         </Button>
       </BottomNav>
+      <GAPageView />
     </div>
   )
 }

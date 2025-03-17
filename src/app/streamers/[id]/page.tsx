@@ -19,6 +19,7 @@ import GameStatisticsTab from '@/components/streamer/GameStatisticsTab'
 import StreamerProfile from '@/components/streamer/StreamerProfile'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import { GAPageView } from '@/hooks/useGAPageView'
 
 export default function StreamerDetailPage() {
   const params = useParams()
@@ -128,6 +129,7 @@ export default function StreamerDetailPage() {
           </Link>
         </Button>
       </BottomNav>
+      <GAPageView />
     </div>
   )
 }
