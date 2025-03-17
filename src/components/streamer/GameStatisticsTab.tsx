@@ -8,7 +8,6 @@ interface IGameStatisticsTabProps {
 }
 
 function GameStatisticsTab({ data }: IGameStatisticsTabProps) {
-  console.log(data.monthlyParticipation)
   return (
     <Card className="border-border/50 bg-card">
       <CardHeader>
@@ -34,7 +33,6 @@ function GameStatisticsTab({ data }: IGameStatisticsTabProps) {
             <h3 className="mb-2 text-sm font-medium">월별 참여 게임 수</h3>
             <div className="grid grid-cols-1 gap-2">
               {data.monthlyParticipation.map(({ yearMonth, count }) => {
-                console.log(yearMonth)
                 const [year, month] = yearMonth.split('-')
 
                 return (
