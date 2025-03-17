@@ -36,6 +36,7 @@ export default function TimeLinePage() {
     queryKey: ['timeline', selectedDate],
     queryFn: () => (selectedDate ? fetchTimelineByDate(selectedDate) : null),
     enabled: !!selectedDate,
+    staleTime: 1000 * 10,
   })
 
   const {
@@ -52,7 +53,7 @@ export default function TimeLinePage() {
         ? undefined
         : lastPage.currentPage + 1,
     initialPageParam: 1,
-    staleTime: 1000 * 2,
+    staleTime: 1000 * 5,
   })
 
   const handleDateChage = (date: Date | null) => {

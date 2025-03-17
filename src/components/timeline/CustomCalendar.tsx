@@ -13,6 +13,7 @@ function CustomCalendar({ onDateSelect }: ICustomCalendarProps) {
   const { data, isSuccess } = useQuery({
     queryKey: ['timelinesDate'],
     queryFn: fetchTimelinesDate,
+    staleTime: 1000 * 60,
   })
 
   const handleSelectDay = (date: Date | undefined) => {

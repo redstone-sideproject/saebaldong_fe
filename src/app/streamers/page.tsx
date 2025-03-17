@@ -41,7 +41,11 @@ export default function StreamersPage() {
     setSearchNickname(nickname)
   }
 
-  const { data: streamerData } = useQuery({
+  const {
+    data: streamerData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ['streamer', { sortOrder, sortBy, nickname: debounceValue }],
     queryFn: () =>
       fetchStreamersWithStatus({
@@ -49,7 +53,8 @@ export default function StreamersPage() {
         sortField: sortBy,
         sortOrder: sortOrder,
       }),
-    staleTime: 1000 * 3,
+    staleTime: 1000 * 5,
+    retry: 1,
   })
 
   return (
@@ -117,7 +122,11 @@ export default function StreamersPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <StreamerList data={streamerData || null} />
+            <StreamerList
+              data={streamerData || null}
+              isLoading={isLoading}
+              isError={isError}
+            />
           </CardContent>
         </Card>
       </main>

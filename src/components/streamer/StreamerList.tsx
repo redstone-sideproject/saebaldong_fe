@@ -1,4 +1,4 @@
-import { Clock, GamepadIcon, Users } from 'lucide-react'
+import { Clock, GamepadIcon, LoaderCircle, Users } from 'lucide-react'
 import Link from 'next/link'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -8,9 +8,27 @@ import { IStreamerWithStatus, streamerRoleKeyToValue } from '@/types/streamer'
 
 interface IStreamerListProps {
   data: IStreamerWithStatus[] | null
+  isLoading: boolean
+  isError: boolean
 }
 
-function StreamerList({ data }: IStreamerListProps) {
+function StreamerList({ data, isLoading, isError }: IStreamerListProps) {
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <LoaderCircle className="w text-primary mt-10 h-10 w-10 animate-spin" />
+      </div>
+    )
+  }
+
+  if (isError) {
+    return (
+      <div className="flex justify-center">
+        <span className="text-primary">데이터를 가져오는데 실패했습니다.</span>
+      </div>
+    )
+  }
+
   if (!data || data.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">

@@ -26,6 +26,8 @@ export default function StreamerDetailPage() {
   const { data, isLoading, isSuccess, isError } = useQuery({
     queryKey: ['streamerProfile', params.id],
     queryFn: () => fetchStreamerProfile(parseInt(params.id as string)),
+    staleTime: 1000 * 5,
+    retry: 1,
   })
 
   return (
