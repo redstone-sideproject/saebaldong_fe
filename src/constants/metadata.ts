@@ -22,7 +22,6 @@ export const META = {
     '스트리머',
   ],
   url: 'https://saebaldong.kr',
-  googleVerification: '6fc81db361f091c43bd0e96750c8ecd93cd5badf',
   naverVerification: '6fc81db361f091c43bd0e96750c8ecd93cd5badf',
   ogImage: '/opengraph-image.png',
 } as const
@@ -64,7 +63,6 @@ export const getMetadata = (metadataProps?: IGenerateMetadataProps) => {
 
     // 검색 최적화
     verification: {
-      google: META.googleVerification,
       other: {
         'naver-site-verification': META.naverVerification,
       },
