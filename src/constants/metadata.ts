@@ -39,6 +39,10 @@ export const getMetadata = (metadataProps?: IGenerateMetadataProps) => {
     title: TITLE,
     description: DESCRIPTION,
     keywords: [...META.keyword],
+    robots: {
+      index: true,
+      follow: true,
+    },
 
     // og
     openGraph: {

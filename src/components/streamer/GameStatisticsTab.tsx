@@ -25,6 +25,7 @@ function GameStatisticsTab({ data }: IGameStatisticsTabProps) {
               <Progress
                 value={data.participationRatio * 100}
                 className="h-2"
+                aria-label="participationRatio"
               />
             </div>
           </div>
@@ -46,6 +47,7 @@ function GameStatisticsTab({ data }: IGameStatisticsTabProps) {
                     <Progress
                       value={100}
                       className="h-2 flex-1"
+                      aria-label="monthlyParticipation"
                     />
                     <div className="w-8 text-right text-sm font-medium">
                       {count}회

@@ -91,7 +91,10 @@ export default function StreamersPage() {
                   value={sortBy}
                   onValueChange={handleSortChange}
                 >
-                  <SelectTrigger className="bg-secondary border-border/50 h-8 w-[140px] text-xs">
+                  <SelectTrigger
+                    className="bg-secondary border-border/50 h-8 w-[140px] text-xs"
+                    aria-label="select sort button"
+                  >
                     <SelectValue placeholder="정렬 기준" />
                   </SelectTrigger>
                   <SelectContent>
@@ -112,6 +115,7 @@ export default function StreamersPage() {
                   size="icon"
                   className="h-8 w-8"
                   onClick={toggleSortOrder}
+                  aria-label="ASC / DESC"
                 >
                   {sortOrder === 'ASC' ? (
                     <SortAsc className="h-4 w-4" />
@@ -139,6 +143,7 @@ export default function StreamersPage() {
           size="sm"
           asChild
           className="gap-1"
+          aria-label="Move streamer page"
         >
           <Link
             href="/"
@@ -153,6 +158,7 @@ export default function StreamersPage() {
           size="sm"
           asChild
           className="gap-1"
+          aria-label="Move streamer page"
         >
           <Link
             href="/timeline"

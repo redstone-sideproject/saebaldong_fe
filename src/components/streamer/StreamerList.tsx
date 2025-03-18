@@ -53,7 +53,10 @@ function StreamerList({ data, isLoading, isError }: IStreamerListProps) {
           onClick={() => gacta(GA_CTA_EVENTS.onClickStreamerDetailCTA)}
         >
           <Avatar className="border-border/50 h-12 w-12 border">
-            <AvatarImage src={streamer.profileImageUrl} />
+            <AvatarImage
+              src={streamer.profileImageUrl}
+              alt={`${streamer.nickname}`}
+            />
             <AvatarFallback className="bg-primary text-primary-foreground">
               {streamer.nickname.charAt(0)}
             </AvatarFallback>
@@ -89,6 +92,7 @@ function StreamerList({ data, isLoading, isError }: IStreamerListProps) {
               <Progress
                 value={streamer.participationRatio * 100}
                 className="h-1.5"
+                aria-label="participationRatio"
               />
             </div>
           </div>

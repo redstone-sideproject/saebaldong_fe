@@ -15,7 +15,10 @@ function StreamerProfile({ data }: IStreamerProfileProps) {
       <CardContent className="p-6">
         <div className="flex flex-col items-center text-center">
           <Avatar className="border-primary/20 mb-4 h-24 w-24 border-4">
-            <AvatarImage src={data.profileImageUrl} />
+            <AvatarImage
+              src={data.profileImageUrl}
+              alt={`${data.nickname}`}
+            />
             <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
               {data.nickname}
             </AvatarFallback>

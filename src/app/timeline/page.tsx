@@ -126,6 +126,7 @@ export default function TimeLinePage() {
           size="sm"
           asChild
           className="gap-1"
+          aria-label="Move home page"
         >
           <Link
             href="/"
@@ -140,6 +141,7 @@ export default function TimeLinePage() {
           size="sm"
           asChild
           className="gap-1"
+          aria-label="Move streamer page"
         >
           <Link
             href="/streamers"
