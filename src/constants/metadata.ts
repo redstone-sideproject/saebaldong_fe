@@ -68,7 +68,6 @@ export const getMetadata = (metadataProps?: IGenerateMetadataProps) => {
         'naver-site-verification': META.naverVerification,
       },
     },
-    icons: '/favicon.png',
   }
 
   return metadata
