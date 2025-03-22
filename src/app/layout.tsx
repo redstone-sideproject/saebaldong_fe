@@ -38,7 +38,7 @@ export default function RootLayout({
         <TanstackQueryProvider>
           <div className="mx-auto flex min-h-screen max-w-7xl flex-col">
             <Header />
-            <div className="grow">{children}</div>
+            <div className="grow p-4">{children}</div>
 
             <Footer />
           </div>
