@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Bell, LoaderCircle } from 'lucide-react'
 import { useState } from 'react'
 
+import { fetchRecentChangelog } from '@/api/changelog'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,8 +16,6 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
-
-import { fetchRecentChangelog } from '@/api/changelog'
 
 function ChangelogModal() {
   const [isModalOpen, setModalOpen] = useState<boolean>(false)

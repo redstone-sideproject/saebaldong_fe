@@ -3,11 +3,10 @@ import { useQuery } from '@tanstack/react-query'
 import { ArrowLeft, Clock, LoaderCircle } from 'lucide-react'
 import Link from 'next/link'
 
+import { fetchAllChangelog } from '@/api/changelog'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-
-import { fetchAllChangelog } from '@/api/changelog'
 import { ChangelogTypeUnion } from '@/types/changelog'
 function ChangelogPage() {
   const {
