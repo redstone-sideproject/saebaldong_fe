@@ -40,6 +40,10 @@
 <img src="docs/images/streamer_detail.PNG" width="800">
 </details>
 
+## 🔗 사이트 주소
+
+- [새발동 통계 사이트](https://saebaldong.kr)
+
 ## 💬 기능 추가 및 버그 제보
 
 - che0189@gmail.com

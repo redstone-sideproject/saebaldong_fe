@@ -1,6 +1,7 @@
 import { ArrowRight, Calendar, Users } from 'lucide-react'
 import Link from 'next/link'
 
+import ChangelogModal from '@/components/changelog/ChangelogModal'
 import { GAPageView } from '@/hooks/useGAPageView'
 
 export default function Home() {
@@ -9,6 +10,9 @@ export default function Home() {
       <main className="mx-auto flex-1">
         <section className="container py-12 md:py-24">
           <div className="mx-auto flex max-w-[980px] flex-col items-center gap-4 text-center">
+            <div className="flex w-full justify-end">
+              <ChangelogModal />
+            </div>
             <h1 className="text-3xl leading-tight font-bold tracking-tighter md:text-5xl lg:text-6xl lg:leading-[1.1]">
               새발동 <span className="text-primary">게임 통계</span>
             </h1>
