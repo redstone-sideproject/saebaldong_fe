@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 
-import Loading from '@/components/global/Loading'
+// import Loading from '@/components/global/Loading'
 import ValorantMatchCard from '@/components/valorant/ValorantMatchCard'
 
 import { fetchValorantMatchByTimeline } from '@/api/valorant'
@@ -22,11 +22,15 @@ function ValorantMatchList({ timelineId }: IValorantMatchListProps) {
   })
 
   if (isLoading) {
-    return <Loading />
+    return
   }
 
   if (valorantMatch?.length === 0) {
-    return
+    return (
+      <div className="text-primary mt-5 text-center text-base">
+        <span>경기 기록이 없습니다.</span>
+      </div>
+    )
   }
 
   return (

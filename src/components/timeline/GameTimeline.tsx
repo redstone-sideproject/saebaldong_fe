@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import ValorantMatchList from '@/components/timeline/ValorantMatchList'
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Card, CardContent } from '@/components/ui/card'
+import ValorantMatchList from '@/components/valorant/ValorantMatchList'
 import { transDateFormat } from '@/lib/date'
 import { gacta } from '@/lib/gacta'
 import { GA_CTA_EVENTS } from '@/types/constants'
