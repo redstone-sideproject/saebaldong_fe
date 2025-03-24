@@ -1,6 +1,7 @@
-import { Clock, GamepadIcon, LoaderCircle, Users } from 'lucide-react'
+import { Clock, GamepadIcon, Users } from 'lucide-react'
 import Link from 'next/link'
 
+import Loading from '@/components/global/Loading'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
@@ -16,11 +17,7 @@ interface IStreamerListProps {
 
 function StreamerList({ data, isLoading, isError }: IStreamerListProps) {
   if (isLoading) {
-    return (
-      <div className="flex justify-center">
-        <LoaderCircle className="w text-primary mt-10 h-10 w-10 animate-spin" />
-      </div>
-    )
+    return <Loading />
   }
 
   if (isError) {

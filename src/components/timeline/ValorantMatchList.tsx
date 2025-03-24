@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 
+import Loading from '@/components/global/Loading'
 import ValorantMatchCard from '@/components/valorant/ValorantMatchCard'
 
 import { fetchValorantMatchByTimeline } from '@/api/valorant'
@@ -21,11 +22,7 @@ function ValorantMatchList({ timelineId }: IValorantMatchListProps) {
   })
 
   if (isLoading) {
-    return (
-      <div>
-        <span>loaidn</span>
-      </div>
-    )
+    return <Loading />
   }
 
   if (valorantMatch?.length === 0) {

@@ -1,10 +1,11 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { Bell, LoaderCircle } from 'lucide-react'
+import { Bell } from 'lucide-react'
 import { useState } from 'react'
 
 import { fetchRecentChangelog } from '@/api/changelog'
+import Loading from '@/components/global/Loading'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -56,11 +57,7 @@ function ChangelogModal() {
               최근 업데이트된 변경사항을 확인하세요
             </DialogDescription>
           </DialogHeader>
-          {isLoading && (
-            <div className="flex justify-center">
-              <LoaderCircle className="text-primary mt-10 h-10 w-10 animate-spin" />
-            </div>
-          )}
+          {isLoading && <Loading />}
           {isError && (
             <div className="text-primary text-center">
               <span>최근 업데이트 내역을 가져오는데 실패했어요.</span>
