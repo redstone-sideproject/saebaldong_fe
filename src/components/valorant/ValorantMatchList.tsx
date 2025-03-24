@@ -3,9 +3,8 @@
 import { useQuery } from '@tanstack/react-query'
 
 // import Loading from '@/components/global/Loading'
-import ValorantMatchCard from '@/components/valorant/ValorantMatchCard'
-
 import { fetchValorantMatchByTimeline } from '@/api/valorant'
+import ValorantMatchCard from '@/components/valorant/ValorantMatchCard'
 
 interface IValorantMatchListProps {
   timelineId: number

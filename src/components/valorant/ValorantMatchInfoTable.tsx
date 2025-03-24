@@ -1,5 +1,4 @@
 import ValorantPlayerInfo from '@/components/valorant/ValorantPlayerInfo'
-
 import { IValorantMatchDetail } from '@/types/valorant'
 
 interface IValorantMatchInfoTableProps {

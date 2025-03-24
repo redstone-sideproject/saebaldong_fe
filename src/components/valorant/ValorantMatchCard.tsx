@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import ValorantMatchInfoTable from '@/components/valorant/ValorantMatchInfoTable'
-
 import { cn } from '@/lib/utils'
 import { convertMatchType, convertValorantMap } from '@/lib/valorant'
 import { IValorantMatchDetail } from '@/types/valorant'
