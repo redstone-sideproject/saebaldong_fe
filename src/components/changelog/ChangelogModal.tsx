@@ -40,7 +40,7 @@ function ChangelogModal() {
       >
         <Bell className="h-4 w-4" />
         <span className="hidden sm:inline">업데이트 내역</span>
-        <span className="bg-primary absolute -top-1 -right-1 h-2 w-2 rounded-full" />
+        <span className="bg-primary absolute -top-1 -right-1 h-2 w-2 animate-pulse rounded-full" />
       </Button>
 
       <Dialog
