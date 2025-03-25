@@ -49,7 +49,7 @@ function ValorantMatchList({ timelineId }: IValorantMatchListProps) {
               <div className="bg-destructive absolute -left-[24px] h-3 w-3 rounded-full"></div>
             )}
             {/* 내전 */}
-            {data.matchType === 'CUSTOM' && (
+            {data.winningTeam === 'DRAW' && (
               <div className="bg-foreground absolute -left-[24px] h-3 w-3 rounded-full"></div>
             )}
             <ValorantMatchCard data={data} />

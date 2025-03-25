@@ -8,6 +8,7 @@ export const matchTypeKeys = {
 export const teamTypeKeys = {
   RED: 'RED',
   BLUE: 'BLUE',
+  DRAW: 'DRAW',
 } as const
 
 export const valorantAgentKeys = {
@@ -111,6 +112,7 @@ interface IValorantMatchDetail {
   blueScore: number
   redScore: number
   date: Date
+  matchDuration?: number
   players: IValorantMatchPlayer[]
 }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { MapPin, Shield } from 'lucide-react'
+import { MapPin, Shield, Clock } from 'lucide-react'
 import { useState } from 'react'
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
@@ -40,6 +40,14 @@ function ValorantMatchCard({ data }: IValorantMatchCardProps) {
               <Shield className="h-4 w-4" />
               <span>{convertMatchType(data.matchType)}</span>
             </div>
+            {data.matchDuration && (
+              <>
+                {/* 소요시간  */}
+                <span className="text-muted-foreground">•</span>
+                <Clock className="h-4 w-4" />
+                <span>{data.matchDuration}분</span>
+              </>
+            )}
           </div>
           <div className="flex items-center gap-2">
             <div className="text-primary flex flex-col items-center text-xs font-semibold md:text-sm">
