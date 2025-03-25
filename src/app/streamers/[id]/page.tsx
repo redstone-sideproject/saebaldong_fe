@@ -1,19 +1,13 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import {
-  ArrowLeft,
-  GamepadIcon,
-  Home,
-  LoaderCircle,
-  Trophy,
-  Users,
-} from 'lucide-react'
+import { ArrowLeft, GamepadIcon, Home, Trophy, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 import { fetchStreamerProfile } from '@/api/streamer'
 import BottomNav from '@/components/global/BottomNav'
+import Loading from '@/components/global/Loading'
 import GameListTab from '@/components/streamer/GameListTab'
 import GameStatisticsTab from '@/components/streamer/GameStatisticsTab'
 import StreamerProfile from '@/components/streamer/StreamerProfile'
@@ -73,11 +67,7 @@ export default function StreamerDetailPage() {
                   </TabsTrigger>
                 </TabsList>
 
-                {isLoading && (
-                  <div className="flex justify-center">
-                    <LoaderCircle className="text-primary mt-10 h-10 w-10 animate-spin" />
-                  </div>
-                )}
+                {isLoading && <Loading />}
 
                 {isError && (
                   <div className="flex justify-center">

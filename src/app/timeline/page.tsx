@@ -1,13 +1,14 @@
 'use client'
 
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
-import { Home, Users, LoaderCircle } from 'lucide-react'
+import { Home, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { useState } from 'react'
 
 import { fetchTimelineByDate, fetchTimelines } from '@/api/timeline'
 import BottomNav from '@/components/global/BottomNav'
+import Loading from '@/components/global/Loading'
 import CustomCalendar from '@/components/timeline/CustomCalendar'
 import GameTimeline from '@/components/timeline/GameTimeline'
 import { Button } from '@/components/ui/button'
@@ -63,11 +64,7 @@ export default function TimeLinePage() {
 
   const renderGameTimeline = () => {
     if (isTimelineDataLoading || isTimelineDatasLoading) {
-      return (
-        <div className="flex justify-center">
-          <LoaderCircle className="w text-primary mt-10 h-10 w-10 animate-spin" />
-        </div>
-      )
+      return <Loading />
     }
 
     if (isTimelineDataSuccess && timelineData) {

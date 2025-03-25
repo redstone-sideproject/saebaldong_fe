@@ -1,9 +1,10 @@
 'use client'
 import { useQuery } from '@tanstack/react-query'
-import { ArrowLeft, Clock, LoaderCircle } from 'lucide-react'
+import { ArrowLeft, Clock } from 'lucide-react'
 import Link from 'next/link'
 
 import { fetchAllChangelog } from '@/api/changelog'
+import Loading from '@/components/global/Loading'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -41,11 +42,7 @@ function ChangelogPage() {
         새발동 게임 통계 사이트의 모든 업데이트 및 변경 내역을 확인하세요.
       </p>
 
-      {isLoading && (
-        <div className="flex justify-center">
-          <LoaderCircle className="text-primary mt-10 h-10 w-10 animate-spin" />
-        </div>
-      )}
+      {isLoading && <Loading />}
       {isError && (
         <div className="text-primary text-center">
           <span>최근 업데이트 내역을 가져오는데 실패했어요.</span>
