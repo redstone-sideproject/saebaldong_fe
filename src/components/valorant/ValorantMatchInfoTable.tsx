@@ -6,8 +6,12 @@ interface IValorantMatchInfoTableProps {
 }
 
 function ValorantMatchInfoTable({ data }: IValorantMatchInfoTableProps) {
-  const blueTeam = data.players.filter((player) => player.team === 'BLUE')
-  const redTeam = data.players.filter((player) => player.team === 'RED')
+  const blueTeam = data.players
+    .filter((player) => player.team === 'BLUE')
+    .sort((a, b) => b.avgCombatScore - a.avgCombatScore)
+  const redTeam = data.players
+    .filter((player) => player.team === 'RED')
+    .sort((a, b) => b.avgCombatScore - a.avgCombatScore)
 
   return (
     <div className="mt-4 space-y-6">
@@ -21,7 +25,9 @@ function ValorantMatchInfoTable({ data }: IValorantMatchInfoTableProps) {
             <table className="w-full min-w-[700px]">
               <thead>
                 <tr className="border-border border-b">
-                  <th className="p-2 text-left">플레이어</th>
+                  <th className="bg-card sticky left-0 z-20 w-45 p-2 text-left">
+                    플레이어
+                  </th>
                   <th className="p-2 text-center">티어</th>
                   <th className="p-2 text-center">K/D/A</th>
                   <th className="p-2 text-center">ACS</th>
@@ -32,10 +38,12 @@ function ValorantMatchInfoTable({ data }: IValorantMatchInfoTableProps) {
                 </tr>
               </thead>
               <tbody>
-                {blueTeam.map((player) => (
+                {blueTeam.map((player, index) => (
                   <ValorantPlayerInfo
                     key={crypto.randomUUID()}
                     player={player}
+                    index={index}
+                    winningTeam={data.winningTeam}
                   />
                 ))}
               </tbody>
@@ -52,7 +60,9 @@ function ValorantMatchInfoTable({ data }: IValorantMatchInfoTableProps) {
             <table className="w-full min-w-[700px]">
               <thead>
                 <tr className="border-border border-b">
-                  <th className="p-2 text-left">플레이어</th>
+                  <th className="bg-card sticky left-0 w-45 p-2 text-left">
+                    플레이어
+                  </th>
                   <th className="p-2 text-center">티어</th>
                   <th className="p-2 text-center">K/D/A</th>
                   <th className="p-2 text-center">ACS</th>
@@ -63,10 +73,12 @@ function ValorantMatchInfoTable({ data }: IValorantMatchInfoTableProps) {
                 </tr>
               </thead>
               <tbody>
-                {redTeam.map((player) => (
+                {redTeam.map((player, index) => (
                   <ValorantPlayerInfo
                     key={crypto.randomUUID()}
                     player={player}
+                    index={index}
+                    winningTeam={data.winningTeam}
                   />
                 ))}
               </tbody>

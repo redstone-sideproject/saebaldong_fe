@@ -41,7 +41,17 @@ function ValorantMatchList({ timelineId }: IValorantMatchListProps) {
             className="relative"
           >
             {/* 초록 점 */}
-            <div className="bg-primary absolute -left-[24px] h-3 w-3 rounded-full"></div>
+            {data.matchType === 'PARTY' && data.winningTeam === 'BLUE' && (
+              <div className="bg-primary absolute -left-[24px] h-3 w-3 rounded-full"></div>
+            )}
+            {/* 빨간 점 */}
+            {data.matchType === 'PARTY' && data.winningTeam === 'RED' && (
+              <div className="bg-destructive absolute -left-[24px] h-3 w-3 rounded-full"></div>
+            )}
+            {/* 내전 */}
+            {data.matchType === 'CUSTOM' && (
+              <div className="bg-foreground absolute -left-[24px] h-3 w-3 rounded-full"></div>
+            )}
             <ValorantMatchCard data={data} />
           </div>
         ))}

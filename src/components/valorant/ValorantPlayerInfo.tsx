@@ -1,18 +1,25 @@
+import { Trophy } from 'lucide-react'
 import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
 import { convertAgentName } from '@/lib/valorant'
 import { IValorantMatchPlayer } from '@/types/valorant'
-
+import { TeamTypeUnion } from '@/types/valorant'
 interface IValorantPlayerInfoProps {
   player: IValorantMatchPlayer
+  index: number
+  winningTeam: TeamTypeUnion
 }
 
-function ValorantPlayerInfo({ player }: IValorantPlayerInfoProps) {
+function ValorantPlayerInfo({
+  player,
+  winningTeam,
+  index,
+}: IValorantPlayerInfoProps) {
   return (
     <tr className={cn('border-border/50 border-b')}>
       {/* 플레이어  */}
-      <td className="p-2">
+      <td className="bg-border sticky left-0 p-2">
         <div className="flex items-center gap-2">
           {/* 요원 초상화 */}
           <div className="bg-secondary relative h-8 w-8 overflow-hidden rounded-full">
@@ -30,6 +37,9 @@ function ValorantPlayerInfo({ player }: IValorantPlayerInfoProps) {
             <div>
               <div className="flex items-center gap-1 font-medium">
                 {player.streamer.nickname}
+                {index === 0 && winningTeam === player.team && (
+                  <Trophy className="h-4 w-4 text-amber-500" />
+                )}
               </div>
               <div className="text-muted-foreground text-xs">
                 {convertAgentName(player.agent)}
@@ -39,6 +49,9 @@ function ValorantPlayerInfo({ player }: IValorantPlayerInfoProps) {
             <div>
               <div className="flex items-center gap-1 font-medium">
                 {convertAgentName(player.agent)}
+                {index === 0 && winningTeam === player.team && (
+                  <Trophy className="h-4 w-4 text-amber-500" />
+                )}
               </div>
             </div>
           )}
@@ -46,17 +59,19 @@ function ValorantPlayerInfo({ player }: IValorantPlayerInfoProps) {
       </td>
 
       {/* tier */}
-      <td className="flex justify-center p-2">
+      <td className="p-2">
         {player.tier === 'UnRank' ? (
           ''
         ) : (
-          <Image
-            src={`/valorant/tier/${player.tier}_Rank.png`}
-            alt={player.tier}
-            className="object-cover"
-            width={24}
-            height={24}
-          />
+          <div className="flex justify-center">
+            <Image
+              src={`/valorant/tier/${player.tier}_Rank.png`}
+              alt={player.tier}
+              className="object-cover"
+              width={24}
+              height={24}
+            />
+          </div>
         )}
       </td>
 
