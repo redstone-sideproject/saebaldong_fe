@@ -51,7 +51,7 @@ function CustomCalendar({ onDateSelect, onIsDate }: ICustomCalendarProps) {
           onIsDate(true)
         }}
       >
-        모든 기록 보기
+        모든 타임라인 보기
       </Button>
     </div>
   )
