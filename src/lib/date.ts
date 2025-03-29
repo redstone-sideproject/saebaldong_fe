@@ -1,3 +1,5 @@
+import { IValorantMatchDetail } from '@/types/valorant'
+
 export function transDateFormat(value: string) {
   const date = new Date(value)
 
@@ -19,4 +21,20 @@ export function transDateFormat(value: string) {
   const formattedDate = ` ${year}년 ${month}월 ${day}일 ${dayOfWeek}`
 
   return formattedDate
+}
+
+export function groupMatchesByDate(matches: IValorantMatchDetail[]) {
+  return matches.reduce<Record<string, IValorantMatchDetail[]>>(
+    (acc, match) => {
+      const date = new Date(match.date)
+      const kstDate = new Date(date.getTime() + 9 * 60 * 60 * 1000)
+      const dateKey = kstDate.toISOString().split('T')[0] // YYYY-MM-DD
+      if (!acc[dateKey]) {
+        acc[dateKey] = []
+      }
+      acc[dateKey].push(match)
+      return acc
+    },
+    {},
+  )
 }

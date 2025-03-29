@@ -19,6 +19,7 @@ export default function TimeLinePage() {
   const bottom = useRef(null)
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [isDate, setIsDate] = useState<boolean>(true)
   const onIntersect = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting && hasNextPage) {
       fetchNextPage()
@@ -67,6 +68,14 @@ export default function TimeLinePage() {
       return <Loading />
     }
 
+    if (!isDate) {
+      return (
+        <div className="text-primary my-20 text-center">
+          해당 날짜엔 기록이 없어요.
+        </div>
+      )
+    }
+
     if (isTimelineDataSuccess && timelineData) {
       return timelineData.map((data, index) => (
         <GameTimeline
@@ -94,14 +103,14 @@ export default function TimeLinePage() {
     <div className="flex min-h-screen flex-col">
       <main className="container mx-auto flex-1 px-4 py-8 pb-24">
         {/* 정보와 달력 세션 구분 */}
-        <div className="mb-8 flex flex-col-reverse gap-6 md:flex-row">
+        <div className="mb-8 flex flex-col-reverse gap-6 lg:flex-row">
           <div className="flex-1">
             {/* 타이틀 */}
             <div className="mb-6 flex flex-col items-start justify-between space-y-4">
-              <h1 className="text-3xl font-bold tracking-tight">게임 기록</h1>
+              <h1 className="text-3xl font-bold tracking-tight">타임라인</h1>
               <p className="text-muted-foreground mt-1">
-                모든 게임 기록을 최근순으로 보여줍니다. 달력에서 날짜를 선택하면
-                해당 날짜의 기록만 볼 수 있습니다.
+                최근 타임라인 보여드려요. 날짜를 고르면 해당 기록만 확인할 수
+                있어요.
               </p>
             </div>
             {/* 기록 카드 */}
@@ -111,7 +120,10 @@ export default function TimeLinePage() {
 
           {/* 달력 */}
           <div className="shrink-0">
-            <CustomCalendar onDateSelect={handleDateChage} />
+            <CustomCalendar
+              onDateSelect={handleDateChage}
+              onIsDate={setIsDate}
+            />
           </div>
         </div>
       </main>
