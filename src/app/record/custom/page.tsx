@@ -46,6 +46,10 @@ function RecordCustomPage(props: { searchParams: SearchParams }) {
               <p className="text-muted-foreground mt-1">
                 여러 스트리머들이 참여한 발로란트 내전 기록을 확인 할 수 있어요
               </p>
+              <p className="text-muted-foreground">
+                새발동 회원 또는 픽셀 소속 스트리머가 3 ~ 4명 이상 모인 내전만
+                기록돼요.
+              </p>
               <div className="flex gap-x-4">
                 {/* 커스텀 */}
                 <div className="flex items-center gap-x-1">
