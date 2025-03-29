@@ -17,7 +17,7 @@ export default function Home() {
               새발동 <span className="text-primary">게임 통계</span>
             </h1>
             <p className="text-muted-foreground max-w-[750px] text-lg sm:text-xl">
-              새발동 게임 기록과 참여인원의 통계를 한눈에 확인하세요.
+              새발동 타임라인과 참여인원의 통계를 한눈에 확인하세요.
             </p>
           </div>
           <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2">
@@ -28,9 +28,9 @@ export default function Home() {
               <div className="flex h-full flex-col justify-between">
                 <div>
                   <Calendar className="text-primary mb-4 h-8 w-8" />
-                  <h3 className="text-2xl font-bold">게임 기록</h3>
+                  <h3 className="text-2xl font-bold">타임라인</h3>
                   <p className="text-muted-foreground mt-2">
-                    날짜별 게임 기록을 확인해보세요.
+                    날짜별 타임라인을 확인해보세요.
                   </p>
                 </div>
                 <ArrowRight className="text-primary mt-4 h-5 w-5 transition-transform group-hover:translate-x-1" />

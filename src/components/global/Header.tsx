@@ -25,7 +25,7 @@ function Header() {
             href="/timeline"
             pathname={pathname}
           >
-            게임 기록
+            타임라인
           </NavLink>
           <NavLink
             href="/streamers"

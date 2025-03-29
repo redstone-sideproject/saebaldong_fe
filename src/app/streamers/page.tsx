@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { Home, Search, SortAsc, SortDesc, Users } from 'lucide-react'
+import { Home, Search, SortAsc, SortDesc, Calendar } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -164,8 +164,8 @@ export default function StreamersPage() {
             href="/timeline"
             className="flex gap-2"
           >
-            <Users className="h-4 w-4" />
-            <span className="ml-1 hidden sm:inline">게임 기록</span>
+            <Calendar className="h-4 w-4" />
+            <span className="ml-1 hidden sm:inline">타임라인</span>
           </Link>
         </Button>
       </BottomNav>

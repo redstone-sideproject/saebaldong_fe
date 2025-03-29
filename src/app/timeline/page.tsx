@@ -98,10 +98,10 @@ export default function TimeLinePage() {
           <div className="flex-1">
             {/* 타이틀 */}
             <div className="mb-6 flex flex-col items-start justify-between space-y-4">
-              <h1 className="text-3xl font-bold tracking-tight">게임 기록</h1>
+              <h1 className="text-3xl font-bold tracking-tight">타임라인</h1>
               <p className="text-muted-foreground mt-1">
-                모든 게임 기록을 최근순으로 보여줍니다. 달력에서 날짜를 선택하면
-                해당 날짜의 기록만 볼 수 있습니다.
+                최근 게임 기록부터 보여드려요. 날짜를 고르면 해당 기록만 확인할
+                수 있어요.
               </p>
             </div>
             {/* 기록 카드 */}
