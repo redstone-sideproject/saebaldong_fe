@@ -19,6 +19,7 @@ export default function TimeLinePage() {
   const bottom = useRef(null)
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [isDate, setIsDate] = useState<boolean>(true)
   const onIntersect = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting && hasNextPage) {
       fetchNextPage()
@@ -67,6 +68,14 @@ export default function TimeLinePage() {
       return <Loading />
     }
 
+    if (!isDate) {
+      return (
+        <div className="text-primary my-20 text-center">
+          해당 날짜엔 기록이 없어요.
+        </div>
+      )
+    }
+
     if (isTimelineDataSuccess && timelineData) {
       return timelineData.map((data, index) => (
         <GameTimeline
@@ -111,7 +120,10 @@ export default function TimeLinePage() {
 
           {/* 달력 */}
           <div className="shrink-0">
-            <CustomCalendar onDateSelect={handleDateChage} />
+            <CustomCalendar
+              onDateSelect={handleDateChage}
+              onIsDate={setIsDate}
+            />
           </div>
         </div>
       </main>
