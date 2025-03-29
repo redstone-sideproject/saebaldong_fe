@@ -103,7 +103,7 @@ export default function TimeLinePage() {
     <div className="flex min-h-screen flex-col">
       <main className="container mx-auto flex-1 px-4 py-8 pb-24">
         {/* 정보와 달력 세션 구분 */}
-        <div className="mb-8 flex flex-col-reverse gap-6 md:flex-row">
+        <div className="mb-8 flex flex-col-reverse gap-6 lg:flex-row">
           <div className="flex-1">
             {/* 타이틀 */}
             <div className="mb-6 flex flex-col items-start justify-between space-y-4">

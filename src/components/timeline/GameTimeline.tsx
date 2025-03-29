@@ -68,7 +68,7 @@ function GameTimeline({ data }: IGameTimelineProps) {
                       {data.participations.map((participation) => (
                         <div
                           key={crypto.randomUUID()}
-                          className="hover:border-primary flex cursor-pointer items-center gap-1.5 rounded-full border p-1"
+                          className="hover:border-primary flex cursor-pointer items-center gap-1.5 rounded-full border px-2 py-1"
                           onClick={() => {
                             handleStreamerClick(
                               participation.streamer.streamerId,
