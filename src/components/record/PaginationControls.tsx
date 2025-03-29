@@ -7,7 +7,6 @@ import {
   PaginationContent,
   PaginationItem,
 } from '@/components/ui/pagination'
-
 import { cn } from '@/lib/utils'
 
 function PaginationControls({

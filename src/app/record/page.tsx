@@ -5,13 +5,12 @@ import { Home, Users } from 'lucide-react'
 import Link from 'next/link'
 import { use } from 'react'
 
+import { fetchValorantMatchByQuery } from '@/api/valorant'
 import BottomNav from '@/components/global/BottomNav'
 import Loading from '@/components/global/Loading'
 import PaginationControls from '@/components/record/PaginationControls'
 import RecordList from '@/components/record/RecordList'
 import { Button } from '@/components/ui/button'
-
-import { fetchValorantMatchByQuery } from '@/api/valorant'
 import { GAPageView } from '@/hooks/useGAPageView'
 
 type SearchParams = Promise<{ [key: string]: string }>
