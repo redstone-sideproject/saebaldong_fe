@@ -116,6 +116,12 @@ interface IValorantMatchDetail {
   players: IValorantMatchPlayer[]
 }
 
+interface IValorantMatchPage {
+  data: IValorantMatchDetail[]
+  currentPage: number
+  totalPage: number
+}
+
 type MatchTypeUnion = (typeof matchTypeKeys)[keyof typeof matchTypeKeys]
 
 type TeamTypeUnion = (typeof teamTypeKeys)[keyof typeof teamTypeKeys]
@@ -136,4 +142,5 @@ export type {
   ValorantMapUnion,
   IValorantMatchDetail,
   IValorantMatchPlayer,
+  IValorantMatchPage,
 }

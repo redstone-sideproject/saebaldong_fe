@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+
 function Header() {
   const pathname = usePathname()
 
@@ -27,6 +28,35 @@ function Header() {
           >
             타임라인
           </NavLink>
+
+          <div className="group">
+            <NavLink
+              href="/record"
+              pathname={pathname}
+            >
+              기록실
+            </NavLink>
+            <div className="bg-background absolute hidden flex-col items-center gap-y-1 rounded-2xl border px-4 py-2 group-hover:flex">
+              <NavLink
+                href="/record"
+                pathname={pathname}
+              >
+                전체
+              </NavLink>
+              <NavLink
+                href="/record/party"
+                pathname={pathname}
+              >
+                5인큐
+              </NavLink>
+              <NavLink
+                href="/record/custom"
+                pathname={pathname}
+              >
+                내전
+              </NavLink>
+            </div>
+          </div>
           <NavLink
             href="/streamers"
             pathname={pathname}

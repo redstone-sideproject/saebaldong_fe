@@ -1,5 +1,9 @@
 import publicAPI from '@/api/publicAPI'
-import { IValorantMatchDetail } from '@/types/valorant'
+import {
+  IValorantMatchDetail,
+  IValorantMatchPage,
+  MatchTypeUnion,
+} from '@/types/valorant'
 
 async function fetchValorantMatchByTimeline(
   timelineId: number,
@@ -8,9 +12,12 @@ async function fetchValorantMatchByTimeline(
   return result.data
 }
 
-// async function fetchAllChangelog(): Promise<IValorantMatchDetail[]> {
-//   const result = await publicAPI.get(`/changelog/all`)
-//   return result.data
-// }
+async function fetchValorantMatchByQuery(params: {
+  page: number
+  matchType: MatchTypeUnion | null
+}): Promise<IValorantMatchPage> {
+  const result = await publicAPI.get(`/valorant-match/record/`, { params })
+  return result.data
+}
 
-export { fetchValorantMatchByTimeline }
+export { fetchValorantMatchByTimeline, fetchValorantMatchByQuery }
