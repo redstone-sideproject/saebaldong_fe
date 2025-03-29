@@ -28,8 +28,12 @@ function ValorantMatchList({ timelineId }: IValorantMatchListProps) {
 
   if (valorantMatch?.length === 0) {
     return (
-      <div className="text-primary mt-5 text-center text-base">
-        <span>경기 기록이 없습니다.</span>
+      <div className="text-primary mt-5 flex flex-col gap-2 text-center text-base">
+        <span>기록된 게임이 없어요.</span>
+        <span className="text-muted-foreground">
+          Tip: 발로란트 기록이 없거나 다시보기가 남지 않은 경우 경기 기록이 없을
+          수 있어요.
+        </span>
       </div>
     )
   }
