@@ -115,7 +115,7 @@ export default function StreamerDetailPage() {
             className="flex gap-2"
           >
             <Users className="h-4 w-4" />
-            <span className="ml-1 hidden sm:inline">게임 기록</span>
+            <span className="ml-1 hidden sm:inline">타임라인</span>
           </Link>
         </Button>
       </BottomNav>
