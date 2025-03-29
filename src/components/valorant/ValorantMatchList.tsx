@@ -76,7 +76,9 @@ function ValorantMatchList({ timelineId }: IValorantMatchListProps) {
           asChild
           className="mb-4 w-full cursor-pointer"
         >
-          <Link href="/streamers">더 많은 경기 기록 확인하기</Link>
+          <Link href={`/timeline/${timelineId}`}>
+            더 많은 경기 기록 확인하기
+          </Link>
         </Button>
       )}
     </div>

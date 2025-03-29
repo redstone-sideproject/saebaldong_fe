@@ -1,8 +1,16 @@
 'use client'
 
+import { MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 function Header() {
   const pathname = usePathname()
 
@@ -15,7 +23,7 @@ function Header() {
         >
           새발동 <span className="text-foreground">게임 통계</span>
         </Link>
-        <nav className="ml-auto flex gap-4">
+        <nav className="ml-auto hidden gap-4 md:flex">
           <NavLink
             href="/"
             pathname={pathname}
@@ -29,40 +37,114 @@ function Header() {
             타임라인
           </NavLink>
 
-          <div className="group">
-            <NavLink
-              href="/record"
-              pathname={pathname}
-            >
-              기록실
-            </NavLink>
-            <div className="bg-background absolute hidden flex-col items-center gap-y-1 rounded-2xl border px-4 py-2 group-hover:flex">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
               <NavLink
                 href="/record"
                 pathname={pathname}
               >
-                전체
+                기록실
               </NavLink>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <NavLink
+                href="/record"
+                pathname={pathname}
+              >
+                <DropdownMenuItem className="cursor-pointer">
+                  전체 기록실
+                </DropdownMenuItem>
+              </NavLink>
+              <DropdownMenuSeparator />
               <NavLink
                 href="/record/party"
                 pathname={pathname}
               >
-                5인큐
+                <DropdownMenuItem className="cursor-pointer">
+                  5인큐
+                </DropdownMenuItem>
               </NavLink>
+              <DropdownMenuSeparator />
               <NavLink
                 href="/record/custom"
                 pathname={pathname}
               >
-                내전
+                <DropdownMenuItem className="cursor-pointer">
+                  내전
+                </DropdownMenuItem>
               </NavLink>
-            </div>
-          </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <NavLink
             href="/streamers"
             pathname={pathname}
           >
             스트리머
           </NavLink>
+        </nav>
+
+        <nav className="ml-auto flex gap-4 md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <MenuIcon className="cursor-pointer" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <NavLink
+                href="/"
+                pathname={pathname}
+              >
+                <DropdownMenuItem className="cursor-pointer">
+                  홈
+                </DropdownMenuItem>
+              </NavLink>
+              <DropdownMenuSeparator />
+              <NavLink
+                href="/timeline"
+                pathname={pathname}
+              >
+                <DropdownMenuItem className="cursor-pointer">
+                  타임라인
+                </DropdownMenuItem>
+              </NavLink>
+              <DropdownMenuSeparator />
+
+              <NavLink
+                href="/record"
+                pathname={pathname}
+              >
+                <DropdownMenuItem className="cursor-pointer">
+                  전체 기록실
+                </DropdownMenuItem>
+              </NavLink>
+              <DropdownMenuSeparator />
+              <NavLink
+                href="/record/party"
+                pathname={pathname}
+              >
+                <DropdownMenuItem className="cursor-pointer">
+                  5인큐
+                </DropdownMenuItem>
+              </NavLink>
+              <DropdownMenuSeparator />
+              <NavLink
+                href="/record/custom"
+                pathname={pathname}
+              >
+                <DropdownMenuItem className="cursor-pointer">
+                  내전
+                </DropdownMenuItem>
+              </NavLink>
+              <DropdownMenuSeparator />
+              <NavLink
+                href="/streamers"
+                pathname={pathname}
+              >
+                <DropdownMenuItem className="cursor-pointer">
+                  스트리머
+                </DropdownMenuItem>
+              </NavLink>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
       </div>
     </header>

@@ -8,9 +8,6 @@ interface IRecordListProps {
 
 function RecordList({ data }: IRecordListProps) {
   const groupedMatches = groupMatchesByDate(data)
-
-  console.log(groupedMatches)
-
   return (
     <div className="space-y-6">
       {Object.entries(groupedMatches)

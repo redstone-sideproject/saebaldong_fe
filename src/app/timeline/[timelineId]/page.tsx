@@ -5,19 +5,18 @@ import { Home, Users } from 'lucide-react'
 import Link from 'next/link'
 import { use } from 'react'
 
-import { fetchValorantMatchByQuery } from '@/api/valorant'
+import { fetchValorantMatchByTimeline } from '@/api/valorant'
 import BottomNav from '@/components/global/BottomNav'
 import Loading from '@/components/global/Loading'
-import PaginationControls from '@/components/record/PaginationControls'
 import RecordList from '@/components/record/RecordList'
 import { Button } from '@/components/ui/button'
 import { GAPageView } from '@/hooks/useGAPageView'
 
-type SearchParams = Promise<{ [key: string]: string }>
+type Params = Promise<{ timelineId: string }>
 
-function RecordPage(props: { searchParams: SearchParams }) {
-  const searchParams = use(props.searchParams)
-  const page = parseInt(searchParams.page) || 1
+function TimelineRecordDetailPage(props: { params: Params }) {
+  const params = use(props.params)
+  const timelineId = parseInt(params.timelineId)
 
   const {
     data: matchData,
@@ -25,12 +24,8 @@ function RecordPage(props: { searchParams: SearchParams }) {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ['valorantMatch', page, 'all'],
-    queryFn: () =>
-      fetchValorantMatchByQuery({
-        page: page,
-        matchType: null,
-      }),
+    queryKey: ['valorantMatch', timelineId],
+    queryFn: () => fetchValorantMatchByTimeline(timelineId),
   })
 
   return (
@@ -40,13 +35,7 @@ function RecordPage(props: { searchParams: SearchParams }) {
           <div className="flex-1">
             {/* 타이틀 */}
             <div className="mb-6 flex flex-col items-start justify-between space-y-4">
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                기록실
-              </h1>
-              <p className="text-muted-foreground mt-1">
-                새발동에서 진행한 5인큐와 여러 스트리머들이 참여한 발로란트 내전
-                기록을 모두 확인 할 수 있어요
-              </p>
+              {/* <h1 className="text-3xl font-bold tracking-tight">기록실</h1> */}
               <div className="flex gap-x-4">
                 {/* 초록 점 */}
                 <div className="flex items-center gap-x-1">
@@ -82,19 +71,15 @@ function RecordPage(props: { searchParams: SearchParams }) {
             )}
             {isSuccess && (
               <div className="space-y-4">
-                {matchData.data.length === 0 ? (
+                {matchData.length === 0 ? (
                   <div className="flex w-full justify-center">
                     <span className="text-primary text-center">
                       매치 기록이 없어요
                     </span>
                   </div>
                 ) : (
-                  <RecordList data={matchData.data} />
+                  <RecordList data={matchData} />
                 )}
-                <PaginationControls
-                  currentPage={matchData.currentPage}
-                  totalPages={matchData.totalPage}
-                />
               </div>
             )}
           </div>
@@ -139,4 +124,4 @@ function RecordPage(props: { searchParams: SearchParams }) {
   )
 }
 
-export default RecordPage
+export default TimelineRecordDetailPage
