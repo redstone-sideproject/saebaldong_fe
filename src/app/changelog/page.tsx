@@ -93,7 +93,9 @@ function ChangelogPage() {
                               className="flex items-start gap-2"
                             >
                               <span className="text-muted-foreground">•</span>
-                              <span>{change.description}</span>
+                              <span className="whitespace-pre-line">
+                                {change.description.replace(/\\n/g, '\n')}
+                              </span>
                             </li>
                           ))}
                         </ul>

@@ -87,8 +87,8 @@ function ChangelogModal() {
                             {change.type === 'FIX' && '수정'}
                           </Badge>
                           <div>
-                            <span className="text-sm">
-                              {change.description}
+                            <span className="text-sm whitespace-pre-line">
+                              {change.description.replace(/\\n/g, '\n')}
                             </span>
                           </div>
                         </li>
