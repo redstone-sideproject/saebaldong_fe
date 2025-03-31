@@ -57,6 +57,7 @@ export default function TimeLinePage() {
         : lastPage.currentPage + 1,
     initialPageParam: 1,
     staleTime: 1000 * 5,
+    retry: 1,
   })
 
   const handleDateChage = (date: Date | null) => {
@@ -96,7 +97,12 @@ export default function TimeLinePage() {
       )
     }
 
-    return <div className="text-center">데이터가 없습니다.</div>
+    return (
+      <div className="text-destructive text-center">
+        데이터를 불러오는 중 문제가 발생했어요. 현재 일부 에러가 있어 수정 중에
+        있어요!
+      </div>
+    )
   }
 
   return (
