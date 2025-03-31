@@ -26,6 +26,7 @@ function TimelineRecordDetailPage(props: { params: Params }) {
   } = useQuery({
     queryKey: ['valorantMatch', timelineId],
     queryFn: () => fetchValorantMatchByTimeline(timelineId),
+    retry: 1,
   })
 
   return (
@@ -66,7 +67,8 @@ function TimelineRecordDetailPage(props: { params: Params }) {
             {isLoading && <Loading />}
             {isError && (
               <span className="text-destructive">
-                데이터를 불러오는 중 문제가 발생했어요
+                데이터를 불러오는 중 문제가 발생했어요. 해당 URL이 정확한지
+                확인해주세요.
               </span>
             )}
             {isSuccess && (

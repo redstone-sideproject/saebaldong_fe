@@ -99,8 +99,7 @@ export default function TimeLinePage() {
 
     return (
       <div className="text-destructive text-center">
-        데이터를 불러오는 중 문제가 발생했어요. 현재 일부 에러가 있어 수정 중에
-        있어요!
+        데이터를 불러오는 중 문제가 발생했어요.
       </div>
     )
   }

@@ -48,7 +48,7 @@ function StreamerList({ data, isLoading, isError }: IStreamerListProps) {
           href={`/streamers/${streamer.streamerId}`}
           className="border-border/50 bg-secondary/30 hover:border-primary/30 hover:bg-secondary/40 flex items-center rounded-lg border p-3 transition-colors"
           onClick={() => gacta(GA_CTA_EVENTS.onClickStreamerDetailCTA)}
-          // prefetch={false}
+          prefetch={false}
         >
           <Avatar className="border-border/50 h-12 w-12 border">
             <AvatarImage
