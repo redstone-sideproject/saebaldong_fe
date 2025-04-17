@@ -69,6 +69,7 @@ export default function AdminLoginPage() {
                 <Input
                   id="userId"
                   placeholder="관리자 아이디"
+                  autoComplete="off"
                   {...register('userId')}
                 />
                 {errors.userId && (
@@ -82,6 +83,7 @@ export default function AdminLoginPage() {
                 <Input
                   id="password"
                   type="password"
+                  autoComplete="new-password"
                   placeholder="비밀번호"
                   {...register('password')}
                 />
