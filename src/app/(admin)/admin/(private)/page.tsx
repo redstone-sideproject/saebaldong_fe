@@ -1,3 +1,5 @@
+'use client'
+
 function AdminPage() {
   return (
     <div>

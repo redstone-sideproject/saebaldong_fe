@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
@@ -15,6 +17,19 @@ const nextConfig: NextConfig = {
         hostname: 'profile.img.sooplive.co.kr',
       },
     ],
+  },
+
+  // 개발환경을 위한 것
+  rewrites: async () => {
+    if (isDev) {
+      return [
+        {
+          source: '/:path*',
+          destination: 'http://localhost:8000/:path*',
+        },
+      ]
+    }
+    return []
   },
 }
 
