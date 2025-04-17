@@ -4,8 +4,6 @@ import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import './globals.css'
-import Footer from '@/components/global/Footer'
-import Header from '@/components/global/Header'
 import { getMetadata } from '@/constants/metadata'
 import TanstackQueryProvider from '@/providers/tanstackQueryProvider'
 
@@ -37,10 +35,7 @@ export default function RootLayout({
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GA_ID} />
         <TanstackQueryProvider>
           <div className="mx-auto flex min-h-screen max-w-7xl flex-col">
-            <Header />
-            <div className="grow p-4">{children}</div>
-
-            <Footer />
+            <div>{children}</div>
           </div>
         </TanstackQueryProvider>
       </body>
