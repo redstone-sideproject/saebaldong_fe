@@ -1,3 +1,5 @@
+'use client'
+
 import { Edit, Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -24,7 +26,10 @@ function AdminTimelineCard({ data }: IAdminTimelineCardProps) {
                   size="sm"
                   asChild
                 >
-                  <Link href={`/admin/timelines/${data.timelineId}`}>
+                  <Link
+                    href={`/admin/timelines/${data.timelineId}`}
+                    prefetch={false}
+                  >
                     <Edit className="mr-2 h-4 w-4" />
                     수정
                   </Link>

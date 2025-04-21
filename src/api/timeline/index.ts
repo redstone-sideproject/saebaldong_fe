@@ -6,7 +6,7 @@ import { TimelinePagination, TimelineDate, Timeline } from '@/types/timeline'
 async function fetchTimelines(params: {
   page: number
 }): Promise<TimelinePagination> {
-  const result = await publicAPI.get(`/timeline`, {
+  const result = await publicAPI.get(`/timeline/`, {
     params,
   })
   return result.data

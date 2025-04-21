@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { ArrowLeft, Plus } from 'lucide-react'
 import Link from 'next/link'
-import { use } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 import { fetchTimelines } from '@/api/timeline'
 import Loading from '@/components/global/Loading'
@@ -11,11 +11,10 @@ import PaginationControls from '@/components/record/PaginationControls'
 import AdminTimelineCard from '@/components/timeline/AdminTimelineCard'
 import { Button } from '@/components/ui/button'
 
-
-type SearchParams = Promise<{ [key: string]: string }>
-function AdminTimelinePage(props: { searchParams: SearchParams }) {
-  const searchParams = use(props.searchParams)
-  const page = searchParams.page || '1'
+export default function AdminTimelinePage() {
+  const sp = useSearchParams()
+  const search = sp.get('page') || '1'
+  const page = parseInt(search)
 
   const {
     data: timelineData,
@@ -26,7 +25,7 @@ function AdminTimelinePage(props: { searchParams: SearchParams }) {
     queryKey: ['timeline', { page: page }],
     queryFn: () =>
       fetchTimelines({
-        page: parseInt(page),
+        page: page,
       }),
   })
 
@@ -89,5 +88,3 @@ function AdminTimelinePage(props: { searchParams: SearchParams }) {
     </div>
   )
 }
-
-export default AdminTimelinePage
