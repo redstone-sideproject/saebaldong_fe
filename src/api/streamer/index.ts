@@ -43,8 +43,16 @@ async function addStreamer(payload: TStreamerSchema): Promise<void> {
   await privateAPI.post(`/streamer`, payload)
 }
 
-async function updateStreamer(payload: TStreamerSchema): Promise<void> {
-  await privateAPI.post(`/streamer`, payload)
+async function updateStreamer(params: {
+  streamerId: number
+  payload: TStreamerSchema
+}): Promise<void> {
+  console.log('up')
+  await privateAPI.patch(`/streamer/${params.streamerId}`, params.payload)
+}
+
+async function deleteStreamer(streamerId: number): Promise<void> {
+  await privateAPI.delete(`/streamer/${streamerId}`)
 }
 
 export {
@@ -52,4 +60,5 @@ export {
   fetchStreamerProfile,
   addStreamer,
   updateStreamer,
+  deleteStreamer,
 }

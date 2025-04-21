@@ -1,33 +1,56 @@
 'use client'
 
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 
-import { addStreamer } from '@/api/streamer'
+import { updateStreamer, fetchStreamerProfile } from '@/api/streamer'
 import { StreamerForm } from '@/components/admin/StreamerForm'
+import Loading from '@/components/global/Loading'
 import { Button } from '@/components/ui/button'
 import { TStreamerSchema } from '@/constants/schemas/streamerSchema'
 
 export default function UpdateStreamerPage() {
+  const params = useParams()
   const router = useRouter()
   const queryClient = useQueryClient()
 
+  const {
+    data: streamerData,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useQuery({
+    queryKey: ['streamerProfile', params.streamerId],
+    queryFn: () => fetchStreamerProfile(parseInt(params.streamerId as string)),
+    retry: false,
+  })
+
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: addStreamer,
+    mutationFn: updateStreamer,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['streamer'] })
+      queryClient.invalidateQueries({
+        queryKey: ['streamerProfile', params.streamerId],
+      })
       router.push('/admin/streamers')
     },
   })
 
   const handleSubmit = async (data: TStreamerSchema) => {
     try {
-      await mutateAsync(data)
+      await mutateAsync({
+        streamerId: parseInt(params.streamerId as string),
+        payload: data,
+      })
     } catch (error) {
       throw error
     }
+  }
+
+  if (isLoading) {
+    return <Loading />
   }
 
   return (
@@ -46,10 +69,18 @@ export default function UpdateStreamerPage() {
         <h1 className="text-3xl font-bold">스트리머 정보 수정</h1>
       </div>
 
-      <StreamerForm
-        onSubmit={handleSubmit}
-        isLoading={isPending}
-      />
+      {isSuccess && (
+        <StreamerForm
+          defaultValues={streamerData}
+          onSubmit={handleSubmit}
+          isLoading={isPending}
+        />
+      )}
+      {isError && (
+        <div className="text-center">
+          <p>해당 스트리머가 존재하지 않습니다.</p>
+        </div>
+      )}
     </div>
   )
 }

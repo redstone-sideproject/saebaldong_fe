@@ -4,6 +4,7 @@ import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import './globals.css'
+import { Toaster } from '@/components/ui/sonner'
 import { getMetadata } from '@/constants/metadata'
 import TanstackQueryProvider from '@/providers/tanstackQueryProvider'
 
@@ -36,6 +37,10 @@ export default function RootLayout({
         <TanstackQueryProvider>
           <div className="mx-auto flex min-h-screen max-w-7xl flex-col">
             <div>{children}</div>
+            <Toaster
+              position="top-center"
+              richColors
+            />
           </div>
         </TanstackQueryProvider>
       </body>

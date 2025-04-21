@@ -1,6 +1,6 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   ArrowLeft,
   BarChart3,
@@ -11,10 +11,10 @@ import {
   Trash2,
 } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
-import { fetchStreamersWithStatus } from '@/api/streamer'
+import { fetchStreamersWithStatus, deleteStreamer } from '@/api/streamer'
 import Loading from '@/components/global/Loading'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -23,7 +23,8 @@ import { Input } from '@/components/ui/input'
 import useDebounce from '@/hooks/useDebounce'
 
 function AdminStreamerPage() {
-  const router = useRouter()
+  const queryClient = useQueryClient()
+
   const [searchNickname, setSearchNickname] = useState<string>('')
   const debounceValue = useDebounce(searchNickname)
 
@@ -31,8 +32,6 @@ function AdminStreamerPage() {
     const nickname = e.target.value
     setSearchNickname(nickname)
   }
-
-  console.log('admin stre')
 
   const {
     data: streamerData,
@@ -48,6 +47,22 @@ function AdminStreamerPage() {
     staleTime: 1000 * 5,
     retry: false,
   })
+
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: deleteStreamer,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['streamer'] })
+    },
+  })
+
+  const handleDeleteStreamer = (nickname: string, streamerId: number) => {
+    toast.warning(`${nickname} 스트리머를 삭제하시겠습니까?`, {
+      action: {
+        label: '삭제',
+        onClick: () => mutateAsync(streamerId),
+      },
+    })
+  }
 
   if (isLoading) {
     return <Loading />
@@ -164,7 +179,7 @@ function AdminStreamerPage() {
                     className="flex-1"
                     asChild
                   >
-                    <Link href="/admin/streamers/1">
+                    <Link href={`/admin/streamers/${streamer.streamerId}`}>
                       <Edit className="mr-2 h-4 w-4" />
                       수정
                     </Link>
@@ -173,7 +188,13 @@ function AdminStreamerPage() {
                     variant="destructive"
                     size="sm"
                     className="flex-1 cursor-pointer"
-                    // onClick={() => handleDeleteStreamer(streamer.streamerId)}
+                    disabled={isPending}
+                    onClick={() =>
+                      handleDeleteStreamer(
+                        streamer.nickname,
+                        streamer.streamerId,
+                      )
+                    }
                   >
                     <Trash2 className="mr-2 h-4 w-4" />
                     삭제

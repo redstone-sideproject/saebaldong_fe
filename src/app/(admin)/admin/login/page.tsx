@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
+import { requestLogin } from '@/api/admin/loginApi'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -19,8 +20,6 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-
-import { requestLogin } from '@/api/admin/loginApi'
 import { TLoginSchema, LoginSchema } from '@/constants/schemas/loginSchema'
 
 export default function AdminLoginPage() {
