@@ -2,6 +2,7 @@ import privateAPI from '@/api/privateAPI'
 import publicAPI from '@/api/publicAPI'
 import { TStreamerSchema } from '@/constants/schemas/streamerSchema'
 import {
+  IStreamer,
   IStreamerWithStatus,
   IStreamerProfile,
   SortFieldUnion,
@@ -47,12 +48,16 @@ async function updateStreamer(params: {
   streamerId: number
   payload: TStreamerSchema
 }): Promise<void> {
-  console.log('up')
   await privateAPI.patch(`/streamer/${params.streamerId}`, params.payload)
 }
 
 async function deleteStreamer(streamerId: number): Promise<void> {
   await privateAPI.delete(`/streamer/${streamerId}`)
+}
+
+async function fetchAllStreamer(): Promise<IStreamer[]> {
+  const result = await privateAPI.get(`/streamer/all`)
+  return result.data
 }
 
 export {
@@ -61,4 +66,5 @@ export {
   addStreamer,
   updateStreamer,
   deleteStreamer,
+  fetchAllStreamer,
 }

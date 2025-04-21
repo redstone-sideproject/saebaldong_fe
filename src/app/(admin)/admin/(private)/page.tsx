@@ -156,7 +156,7 @@ function AdminPage() {
                   variant="outline"
                   asChild
                 >
-                  <Link href="/admin/games">
+                  <Link href="/admin/timelines">
                     <GamepadIcon className="mr-2 h-4 w-4" />
                     타임라인 관리
                   </Link>
@@ -198,7 +198,7 @@ function AdminPage() {
                   variant="outline"
                   asChild
                 >
-                  <Link href="/admin/games/new">
+                  <Link href="/admin/timelines/new">
                     <Calendar className="mr-2 h-4 w-4" />
                     타임라인 등록
                   </Link>
