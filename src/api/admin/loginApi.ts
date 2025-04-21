@@ -30,6 +30,10 @@ async function requestAuth() {
   return result.data
 }
 
+async function requestLogout() {
+  await privateAPI.post(`/auth/logout`)
+}
+
 export async function test1() {
   const result = await privateAPI.get(`/auth/test1`)
   return result.data
@@ -43,4 +47,4 @@ export async function test3() {
   return result.data
 }
 
-export { requestLogin, requestAuth }
+export { requestLogin, requestAuth, requestLogout }

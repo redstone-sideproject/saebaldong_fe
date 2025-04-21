@@ -2,7 +2,6 @@ import { ArrowRight, Calendar, Users, Sword, Swords } from 'lucide-react'
 import Link from 'next/link'
 
 import ChangelogModal from '@/components/changelog/ChangelogModal'
-
 import { GAPageView } from '@/hooks/useGAPageView'
 
 export default function Home() {

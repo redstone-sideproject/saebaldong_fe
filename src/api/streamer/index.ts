@@ -1,4 +1,6 @@
+import privateAPI from '@/api/privateAPI'
 import publicAPI from '@/api/publicAPI'
+import { TStreamerSchema } from '@/constants/schemas/streamerSchema'
 import {
   IStreamerWithStatus,
   IStreamerProfile,
@@ -37,4 +39,17 @@ async function fetchStreamerProfile(
   return result.data
 }
 
-export { fetchStreamersWithStatus, fetchStreamerProfile }
+async function addStreamer(payload: TStreamerSchema): Promise<void> {
+  await privateAPI.post(`/streamer`, payload)
+}
+
+async function updateStreamer(payload: TStreamerSchema): Promise<void> {
+  await privateAPI.post(`/streamer`, payload)
+}
+
+export {
+  fetchStreamersWithStatus,
+  fetchStreamerProfile,
+  addStreamer,
+  updateStreamer,
+}

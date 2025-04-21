@@ -55,7 +55,7 @@ export default function StreamersPage() {
         sortOrder: sortOrder,
       }),
     staleTime: 1000 * 5,
-    retry: 1,
+    retry: false,
   })
 
   return (
