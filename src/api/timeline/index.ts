@@ -1,4 +1,6 @@
+import privateAPI from '@/api/privateAPI'
 import publicAPI from '@/api/publicAPI'
+import { TCreateTimelineSchema } from '@/constants/schemas/timelineSchema'
 import { TimelinePagination, TimelineDate, Timeline } from '@/types/timeline'
 
 async function fetchTimelines(params: {
@@ -30,4 +32,26 @@ async function fetchTimelineByDate(date: Date): Promise<Timeline[]> {
   return result.data
 }
 
-export { fetchTimelines, fetchTimelinesDate, fetchTimelineByDate }
+async function fetchTimelineById(timelineId: number): Promise<Timeline> {
+  const result = await publicAPI.get(`/timeline/${timelineId}`)
+  return result.data
+}
+
+async function addTimeline(payload: TCreateTimelineSchema): Promise<void> {
+  await privateAPI.post(`/timeline`, payload)
+}
+async function updateTimeline(params: {
+  timelineId: number
+  payload: TCreateTimelineSchema
+}): Promise<void> {
+  await privateAPI.patch(`/timeline/${params.timelineId}`, params.payload)
+}
+
+export {
+  fetchTimelines,
+  fetchTimelinesDate,
+  fetchTimelineByDate,
+  addTimeline,
+  updateTimeline,
+  fetchTimelineById,
+}
