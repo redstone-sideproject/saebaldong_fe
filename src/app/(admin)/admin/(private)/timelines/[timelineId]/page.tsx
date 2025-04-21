@@ -6,11 +6,10 @@ import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 
+import { updateTimeline, fetchTimelineById } from '@/api/timeline'
 import { TimelineForm } from '@/components/admin/TimelineForm'
 import Loading from '@/components/global/Loading'
 import { Button } from '@/components/ui/button'
-
-import { updateTimeline, fetchTimelineById } from '@/api/timeline'
 import { TCreateTimelineSchema } from '@/constants/schemas/timelineSchema'
 
 function UpdateTimelinePage() {

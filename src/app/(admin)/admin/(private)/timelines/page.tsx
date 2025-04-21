@@ -5,12 +5,12 @@ import { ArrowLeft, Plus } from 'lucide-react'
 import Link from 'next/link'
 import { use } from 'react'
 
+import { fetchTimelines } from '@/api/timeline'
 import Loading from '@/components/global/Loading'
 import PaginationControls from '@/components/record/PaginationControls'
 import AdminTimelineCard from '@/components/timeline/AdminTimelineCard'
 import { Button } from '@/components/ui/button'
 
-import { fetchTimelines } from '@/api/timeline'
 
 type SearchParams = Promise<{ [key: string]: string }>
 function AdminTimelinePage(props: { searchParams: SearchParams }) {

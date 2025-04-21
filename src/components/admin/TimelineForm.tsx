@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
+import { fetchAllStreamer } from '@/api/streamer'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -28,8 +29,6 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-
-import { fetchAllStreamer } from '@/api/streamer'
 import {
   createTimelineSchema,
   TCreateTimelineSchema,

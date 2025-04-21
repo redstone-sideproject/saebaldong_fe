@@ -5,10 +5,9 @@ import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import { addTimeline } from '@/api/timeline'
 import { TimelineForm } from '@/components/admin/TimelineForm'
 import { Button } from '@/components/ui/button'
-
-import { addTimeline } from '@/api/timeline'
 import { TCreateTimelineSchema } from '@/constants/schemas/timelineSchema'
 
 function AddTimelinePage() {
