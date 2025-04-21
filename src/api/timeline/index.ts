@@ -28,7 +28,7 @@ async function fetchTimelineByDate(date: Date): Promise<Timeline[]> {
   date.setHours(9, 0, 0, 0)
   const parsedDate = date.toISOString().split('T')
 
-  const result = await publicAPI.get(`/timeline/${parsedDate[0]}`)
+  const result = await publicAPI.get(`/timeline/date/${parsedDate[0]}`)
   return result.data
 }
 
