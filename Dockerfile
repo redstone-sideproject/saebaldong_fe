@@ -1,5 +1,5 @@
 # 1. 공식 Node.js 이미지 사용
-FROM node:20.18-alpine
+FROM node:20.18-alpine AS builder
 
 # 2. 작업 디렉토리 설정
 WORKDIR /app
@@ -16,11 +16,23 @@ COPY . .
 # 6. Next.js 애플리케이션 빌드
 RUN yarn run build
 
-# 7. 컨테이너가 사용할 포트 노출
-EXPOSE 3000
 
-# 8. PM2 설치
+# 8. Production Stage
+FROM node:20.18-alpine
+
+WORKDIR /app
+
+# 9. prod 실행에 필요한 파일만 복사
+COPY --from=builder /app/.next .next
+COPY --from=builder /app/public public
+COPY --from=builder /app/package.json package.json
+COPY --from=builder /app/node_modules node_modules
+
+# 10. PM2 설치
 RUN npm install -g pm2
 
-# 9. PM2를 통해 Next.js 애플리케이션 실행
+# 11. 컨테이너가 사용할 포트 노출
+EXPOSE 3000
+
+# 12. PM2를 통해 Next.js 애플리케이션 실행
 CMD ["pm2-runtime", "start", "npm", "--name", "'next-app'", "--","run", "start"]
