@@ -34,4 +34,4 @@ RUN npm install -g pm2
 EXPOSE 3000
 
 # 12. PM2를 통해 Next.js 애플리케이션 실행
-CMD ["pm2-runtime", "start", "server.js",]
+CMD ["pm2-runtime", "start", "server.js"]
