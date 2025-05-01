@@ -23,10 +23,9 @@ FROM node:20.18-alpine
 WORKDIR /app
 
 # 9. prod 실행에 필요한 파일만 복사
-COPY --from=builder /app/.next .next
-COPY --from=builder /app/public public
-COPY --from=builder /app/package.json package.json
-COPY --from=builder /app/node_modules node_modules
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
 
 # 10. PM2 설치
 RUN npm install -g pm2
@@ -35,4 +34,4 @@ RUN npm install -g pm2
 EXPOSE 3000
 
 # 12. PM2를 통해 Next.js 애플리케이션 실행
-CMD ["pm2-runtime", "start", "npm", "--name", "'next-app'", "--","run", "start"]
+CMD ["pm2-runtime", "start", "server.js",]
