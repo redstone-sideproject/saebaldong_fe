@@ -11,6 +11,10 @@ interface IChangelogItem {
   description: string
 }
 
+interface IChangelogItemForAdmin extends IChangelogItem {
+  changelogId: number
+}
+
 interface IChangelogDateGrouped {
   date: string
 
@@ -20,4 +24,8 @@ interface IChangelogDateGrouped {
 type ChangelogTypeUnion =
   (typeof changelogTypeKeys)[keyof typeof changelogTypeKeys]
 
-export type { ChangelogTypeUnion, IChangelogDateGrouped }
+export type {
+  ChangelogTypeUnion,
+  IChangelogDateGrouped,
+  IChangelogItemForAdmin,
+}
