@@ -1,7 +1,7 @@
 'use client'
 
 import { useQueryClient } from '@tanstack/react-query'
-import { Calendar, GamepadIcon, Users } from 'lucide-react'
+import { Calendar, GamepadIcon, Users, BadgeInfo } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -171,6 +171,16 @@ function AdminPage() {
                     발로란트 매치 관리
                   </Link>
                 </Button>
+                <Button
+                  className="w-full justify-start"
+                  variant="outline"
+                  asChild
+                >
+                  <Link href="/admin/changelogs">
+                    <BadgeInfo className="mr-2 h-4 w-4" />
+                    변경사항 관리
+                  </Link>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -211,6 +221,16 @@ function AdminPage() {
                   <Link href="/admin/games/new">
                     <Calendar className="mr-2 h-4 w-4" />
                     발로란트 매치 등록
+                  </Link>
+                </Button>
+                <Button
+                  className="w-full justify-start"
+                  variant="outline"
+                  asChild
+                >
+                  <Link href="/admin/changelogs/new">
+                    <BadgeInfo className="mr-2 h-4 w-4" />
+                    변경사항 등록
                   </Link>
                 </Button>
               </div>
