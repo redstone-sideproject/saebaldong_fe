@@ -44,7 +44,9 @@ function RecordPartyPage(props: { searchParams: SearchParams }) {
                 기록실 - 발로란트 5인큐
               </h1>
               <p className="text-muted-foreground mt-1">
-                새발동에서 진행한 5인큐 기록을 확인 할 수 있어요
+                새발동에서 스트리머들이 함께 진행한 발로란트 5인큐(경쟁전) 기록을
+                확인할 수 있어요. 아래에서 승리·패배·무승부 결과를 한눈에 볼 수
+                있어요.
               </p>
               <div className="flex gap-x-4">
                 {/* 초록 점 */}

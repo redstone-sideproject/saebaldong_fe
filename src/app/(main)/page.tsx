@@ -2,11 +2,15 @@ import { ArrowRight, Calendar, Users, Sword, Swords } from 'lucide-react'
 import Link from 'next/link'
 
 import ChangelogModal from '@/components/changelog/ChangelogModal'
+import FaqAnswer from '@/components/faq/FaqAnswer'
+import JsonLd from '@/components/global/JsonLd'
+import { faqList, faqSchema } from '@/constants/structuredData'
 import { GAPageView } from '@/hooks/useGAPageView'
 
 export default function Home() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={faqSchema} />
       <main className="mx-auto flex-1">
         <section className="container py-12 md:py-24">
           <div className="mx-auto flex max-w-[980px] flex-col items-center gap-4 text-center">
@@ -20,6 +24,18 @@ export default function Home() {
               새발동 타임라인과 참여인원의 통계를 한눈에 확인하세요.
             </p>
           </div>
+
+          <section
+            aria-label="새발동 소개"
+            className="mx-auto mt-8 max-w-[750px] text-center"
+          >
+            <p className="text-muted-foreground leading-relaxed">
+              새발동은 &quot;새벽 발로란트 동아리&quot;의 줄임말로 늦은 밤부터
+              시작하여 아침까지 발로란트 경쟁전을 돌리는 치지직 스트리머
+              크루입니다. 이 사이트에서 누적 참여 스트리머 수, 게임별 통계,
+              타임라인 기록을 제공합니다.
+            </p>
+          </section>
           <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2">
             <Link
               href="/timeline"
@@ -82,6 +98,31 @@ export default function Home() {
               </div>
             </Link>
           </div>
+
+          <section
+            aria-labelledby="faq-heading"
+            className="mx-auto mt-16 max-w-[750px]"
+          >
+            <h2
+              id="faq-heading"
+              className="mb-6 text-center text-2xl font-bold tracking-tight"
+            >
+              자주 묻는 질문
+            </h2>
+            <dl className="flex flex-col gap-4">
+              {faqList.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="border-border/50 bg-card rounded-lg border p-5 text-left shadow-sm"
+                >
+                  <dt className="font-semibold">{faq.question}</dt>
+                  <dd className="text-muted-foreground mt-2 leading-relaxed">
+                    <FaqAnswer answer={faq.answer} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
         </section>
       </main>
       <GAPageView />

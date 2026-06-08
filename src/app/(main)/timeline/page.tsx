@@ -114,8 +114,9 @@ export default function TimeLinePage() {
             <div className="mb-6 flex flex-col items-start justify-between space-y-4">
               <h1 className="text-3xl font-bold tracking-tight">타임라인</h1>
               <p className="text-muted-foreground mt-1">
-                최근 타임라인 보여드려요. 날짜를 고르면 해당 기록만 확인할 수
-                있어요.
+                새발동의 발로란트 게임 진행 기록을 날짜별 타임라인으로
+                보여드려요. 달력에서 날짜를 고르면 그날 진행한 내전·5인큐 기록만
+                확인할 수 있어요.
               </p>
             </div>
             {/* 기록 카드 */}

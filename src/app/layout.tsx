@@ -4,8 +4,11 @@ import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import './globals.css'
+
+import JsonLd from '@/components/global/JsonLd'
 import { Toaster } from '@/components/ui/sonner'
 import { getMetadata } from '@/constants/metadata'
+import { websiteSchema } from '@/constants/structuredData'
 import TanstackQueryProvider from '@/providers/tanstackQueryProvider'
 
 const geistSans = Geist({
@@ -32,6 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <JsonLd data={websiteSchema} />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GA_ID} />
         <TanstackQueryProvider>

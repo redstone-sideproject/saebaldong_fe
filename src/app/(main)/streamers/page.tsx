@@ -3,7 +3,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { Home, Search, SortAsc, SortDesc, Calendar } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { Suspense, useState } from 'react'
 
 import { fetchStreamersWithStatus } from '@/api/streamer'
 import BottomNav from '@/components/global/BottomNav'
@@ -22,8 +23,11 @@ import useDebounce from '@/hooks/useDebounce'
 import { GAPageView } from '@/hooks/useGAPageView'
 import { SortFieldUnion, SortOrderUnion } from '@/types/streamer'
 
-export default function StreamersPage() {
-  const [searchNickname, setSearchNickname] = useState<string>('')
+function StreamersPageContent() {
+  const searchParams = useSearchParams()
+  const [searchNickname, setSearchNickname] = useState<string>(
+    () => searchParams.get('q') ?? '',
+  )
   const [sortOrder, setSortOrder] = useState<SortOrderUnion>('DESC')
   const [sortBy, setSortBy] = useState<SortFieldUnion>('totalParticipations')
   const debounceValue = useDebounce(searchNickname)
@@ -65,7 +69,8 @@ export default function StreamersPage() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">스트리머</h1>
             <p className="text-muted-foreground mt-1">
-              게임에 참여한 스트리머들의 통계를 확인하세요.
+              새발동에 참여한 발로란트 스트리머들의 통계예요. 참여 횟수, 참여
+              시간, 참여도(%)를 기준으로 정렬해 확인할 수 있어요.
             </p>
           </div>
           <div className="mt-4 flex items-center gap-2 md:mt-0">
@@ -171,5 +176,13 @@ export default function StreamersPage() {
       </BottomNav>
       <GAPageView />
     </div>
+  )
+}
+
+export default function StreamersPage() {
+  return (
+    <Suspense>
+      <StreamersPageContent />
+    </Suspense>
   )
 }
